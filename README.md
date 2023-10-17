@@ -9,11 +9,17 @@ Todo list with shell and markdown format
 - change default city to code of you city
 - create file of day with ./today.sh
 
+## Example
+
+![Screenshot_20231017_004757](https://github.com/enieber/todo-shell/assets/7907068/2bfb6f6e-0ca2-4e08-ae51-01f666ae17e5)
+
+
 ## Required
 
 - shell
 - jq
 - glow
 - curl
+- figlet
 
 ## License GPLv3
