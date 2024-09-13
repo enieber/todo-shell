@@ -4,6 +4,10 @@ import hashlib
 import requests
 import click
 from datetime import datetime, timedelta
+from colorama import Fore
+import pyfiglet
+import json
+
 
 # Definições de variáveis
 tname = datetime.now().strftime("%d%m%y.md")
@@ -43,15 +47,24 @@ def update_state(task_id, state):
         subprocess.run(["glow", tfile])
 
 def parse_clima(path_json):
+    # Abrir e carregar o conteúdo do arquivo JSON
     with open(path_json, "r") as f:
-        data = f.read()
-        cidade = subprocess.getoutput(f"jq .cidade {path_json}")
-        min_temp = subprocess.getoutput(f"jq .clima[0].min {path_json}")
-        max_temp = subprocess.getoutput(f"jq .clima[0].max {path_json}")
-        cond = subprocess.getoutput(f"jq .clima[0].condicao_desc {path_json}")
+        data = json.load(f)  # Parseia o JSON
+
+    # Extraindo as informações necessárias do JSON
+    cidade = data.get("cidade", "Cidade não encontrada")
+    clima = data.get("clima", [{}])[0]  # Obtém o primeiro elemento da lista "clima"
+    min_temp = clima.get("min", "N/A")
+    max_temp = clima.get("max", "N/A")
+    cond = clima.get("condicao_desc", "Condição não encontrada")
+
+    # Formatação da data e dia da semana
     dt = datetime.now().strftime("%d/%m/%y")
     dweek = datetime.now().strftime("%A")
+
+    # Retornando o resultado formatado
     return f"# Diário - {dt}\n\n- {dweek} - {cidade} - max: {max_temp} ºC min: {min_temp} ºC \n- Condições: {cond}\n\n## TODO\n\n"
+
 
 def new_day():
     path_json = "/tmp/clima.json"
@@ -65,7 +78,8 @@ def new_day():
     subprocess.run(["glow", tfile])
 
 def print_name():
-    subprocess.run(["figlet", "today cli"])
+    styled_text=pyfiglet.figlet_format('Today CLI',font= 'doom')
+    print(Fore.WHITE + styled_text)
     print(datetime.now().strftime("%H:%M"))
 
 # Usando a biblioteca click
