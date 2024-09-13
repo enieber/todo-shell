@@ -4,9 +4,10 @@
 # render date, day info based in cityCode of Brasil
 # 
 tname=$(date "+%d%m%y.md")
-tfile="lab/daylog/$tname"
+folder="$HOME/workspace/pop/tasks"
+tfile="$folder/$tname"
 # 244 = sao paulo
-cityCode=244
+cityCode=4704
 
 
 for i in "$@"
@@ -37,7 +38,7 @@ case $i in
     ;;
 esac
 case $i in
-    -drop|--delete|-del)
+    -d|--drop|--delete|-del)
     DELETE="${i#*=}"
 
     ;;
@@ -140,6 +141,7 @@ newDay()
 printName()
 {
   figlet today cli
+  date +%R
 }
 
 if [ "$INSERT" ]; then
@@ -151,7 +153,8 @@ elif [ "$DAYSEARCH" ]; then
         echo "you need pass day back to read file"
     else
         fileResult=$(date -v -$2d "+%d%m%y.md")
-        glow "lab/daylog/$fileResult"
+        echo $fileResult
+        echo "$folder/$fileResult"
     fi
 elif [ "$DELETE" ]; then
     removeTask $2
@@ -178,7 +181,7 @@ else
     printName
     if [ -e $tfile ]
     then
-        cal && glow $tfile
+        gcal && glow $tfile
     else
         echo -n "generate new day? yes or not (y, N): "
         read response

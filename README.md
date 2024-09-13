@@ -1,8 +1,15 @@
-# todo-shell
+# Todo in markdown
 
-Todo list with shell and markdown format
+Todo list with markdown format using shell or python
 
-## How to use
+## How to use with shell
+
+- clone project
+- create folder lab/daylog
+- change default city to code of you city
+- create file of day with ./today.sh
+
+## How to use with python
 
 - clone project
 - create folder lab/daylog
