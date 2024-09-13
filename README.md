@@ -4,6 +4,9 @@ Todo list with markdown format using shell or python
 
 ## Shell option
 
+![Screenshot_20231017_004757](https://github.com/enieber/todo-shell/assets/7907068/2bfb6f6e-0ca2-4e08-ae51-01f666ae17e5)
+
+
 ### Required 
 
 - shell
@@ -11,6 +14,7 @@ Todo list with markdown format using shell or python
 - glow
 - curl
 - figlet
+- cal/gcal
 
 ### Install
 
@@ -26,10 +30,14 @@ Todo list with markdown format using shell or python
 
 ## Python option
 
+![Screenshot from 2024-09-13 17-30-11](https://github.com/user-attachments/assets/c0731520-192f-40af-889b-978c54de0642)
+
+
 ### Required 
 
 - glow
 - uv
+- cal
 
 ### install
 
@@ -41,10 +49,6 @@ Todo list with markdown format using shell or python
 ### Use
 
 - uv run today.py add 'new todo item'
-
-## Example
-
-![Screenshot_20231017_004757](https://github.com/enieber/todo-shell/assets/7907068/2bfb6f6e-0ca2-4e08-ae51-01f666ae17e5)
 
 
 ## License GPLv3
